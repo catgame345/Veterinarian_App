@@ -1,0 +1,44 @@
+<.header>
+  Listing Datos
+  <:actions>
+    <.link patch={~p"/datos/new"}>
+      <.button>New Dato</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="datos"
+  rows={@streams.datos}
+  row_click={fn {_id, dato} -> JS.navigate(~p"/datos/#{dato}") end}
+>
+  <:col :let={{_id, dato}} label="Nombre"><%= dato.nombre %></:col>
+  <:col :let={{_id, dato}} label="Edad"><%= dato.edad %></:col>
+  <:col :let={{_id, dato}} label="Animal"><%= dato.animal %></:col>
+  <:col :let={{_id, dato}} label="Raza"><%= dato.raza %></:col>
+  <:action :let={{_id, dato}}>
+    <div class="sr-only">
+      <.link navigate={~p"/datos/#{dato}"}>Show</.link>
+    </div>
+    <.link patch={~p"/datos/#{dato}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, dato}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: dato.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal :if={@live_action in [:new, :edit]} id="dato-modal" show on_cancel={JS.patch(~p"/datos")}>
+  <.live_component
+    module={VeterinarianWeb.DatoLive.FormComponent}
+    id={@dato.id || :new}
+    title={@page_title}
+    action={@live_action}
+    dato={@dato}
+    patch={~p"/datos"}
+  />
+</.modal>

@@ -1,0 +1,29 @@
+<.header>
+  Dato <%= @dato.id %>
+  <:subtitle>This is a dato record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/datos/#{@dato}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit dato</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Nombre"><%= @dato.nombre %></:item>
+  <:item title="Edad"><%= @dato.edad %></:item>
+  <:item title="Animal"><%= @dato.animal %></:item>
+  <:item title="Raza"><%= @dato.raza %></:item>
+</.list>
+
+<.back navigate={~p"/datos"}>Back to datos</.back>
+
+<.modal :if={@live_action == :edit} id="dato-modal" show on_cancel={JS.patch(~p"/datos/#{@dato}")}>
+  <.live_component
+    module={VeterinarianWeb.DatoLive.FormComponent}
+    id={@dato.id}
+    title={@page_title}
+    action={@live_action}
+    dato={@dato}
+    patch={~p"/datos/#{@dato}"}
+  />
+</.modal>

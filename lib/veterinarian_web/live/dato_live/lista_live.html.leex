@@ -1,0 +1,10 @@
+<main class="font-mono">
+    <%= for dato <- @datos do %>
+       <section class="border border-emerald-500 bg-emerald-400 rounded mb-4">
+         <h1 class="text-center text-3xl font-bold border border-emerald-600 bg-emerald-500 rounded"><%= dato.nombre %></h1>
+         <h2 class="ml-5 text-2xl font-bold">Edad: <span><%= dato.edad %></span> años</h2>
+         <h2 class="ml-5 text-2xl font-bold">Animal: <span><%= dato.animal %></span></h2>
+         <h2 class="ml-5 text-2xl font-bold">Raza: <span><%= dato.raza %></span></h2>
+       </section>
+    <% end %>
+</main>

@@ -1,0 +1,28 @@
+<header class="px-4 sm:px-6 lg:px-8">
+  <nav class="mx-1 mt-1 rounded border border-indigo-900 bg-indigo-800 text-center font-mono">
+    <h1 class="text-3xl font-bold text-gray-200">CatWeb</h1>
+      <ul class="flex">
+        <a href="http://localhost:5173/" class="ml-5 rounded border border-indigo-800 bg-indigo-700 px-4 py-1 text-center text-xl text-gray-200 hover:border-indigo-900 hover:bg-indigo-800">
+          <li>Start</li>
+        </a>
+        <a href="http://localhost:5174/" class="ml-5 rounded border border-indigo-800 bg-indigo-700 px-4 py-1 text-center text-xl text-gray-200 hover:border-indigo-900 hover:bg-indigo-800">
+          <li>Home</li>
+        </a>
+        <a href="http://localhost:5174/test" class="ml-5 rounded border border-indigo-800 bg-indigo-700 px-4 py-1 text-center text-xl text-gray-200 hover:border-indigo-900 hover:bg-indigo-800">
+          <li>Tests</li>
+        </a>
+        <a href="/datos" class="ml-5 rounded border border-indigo-800 bg-indigo-700 px-4 py-1 text-center text-xl text-gray-200 hover:border-indigo-900 hover:bg-indigo-800">
+          <li>Create</li>
+        </a>
+        <a href="/lista" class="ml-5 rounded border border-indigo-800 bg-indigo-700 px-4 py-1 text-center text-xl text-gray-200 hover:border-indigo-900 hover:bg-indigo-800">
+          <li>List</li>
+        </a>
+      </ul>
+  </nav>
+</header>
+<main class="px-4 py-20 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-2xl">
+    <.flash_group flash={@flash} />
+    <%= @inner_content %>
+  </div>
+</main>
